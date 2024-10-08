@@ -24,9 +24,9 @@ export default function PopularSlideMenu() {
     <>
       <h2>Popular Movies</h2>
       <SlideMenu>
-        {popularMoviesArr.map((movie) => {
+        {popularMoviesArr.map((movie, index) => {
           return (
-            <MovieCard movieObject={movie}/>
+            <MovieCard key={index} movieObject={movie}/>
           )
         })}
       </SlideMenu>

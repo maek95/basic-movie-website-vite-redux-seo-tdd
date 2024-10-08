@@ -30,9 +30,9 @@ export default function FavouritesSlideMenu() {
     <>
       <h2>My Favourites</h2>
       <SlideMenu>
-        {favouritedMoviesArr.map((movie) => {
+        {favouritedMoviesArr.map((movie, index) => {
           return (
-            <MovieCard movieObject={movie}/>
+            <MovieCard key={index} movieObject={movie}/>
           )
         })}
       </SlideMenu>

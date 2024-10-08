@@ -5,20 +5,23 @@ import HomePage from './routes/HomePage'
 import MoviePage from './routes/MoviePage'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { fetchTMDBPopularMovies } from './redux/PopularMoviesSlice'
+import { fetchTMDBPopularMovies, setPopularMoviesFromLocalStorage } from './redux/PopularMoviesSlice'
 
 function App() {
 
   const dispatch = useDispatch();
   
   useEffect(() => {
+    if (typeof window !== "undefined") {
 
-    // fetch popular movies once when project mounts, and if any page is refreshed
-    // 'await' not needed because it is an asyncThunk function...
-    // TODO: store in localStorage and don't re-fetch if popularMovies exists in localStorage? 
-    dispatch(fetchTMDBPopularMovies()); 
-
-  }, [])
+      if (localStorage.getItem("popularMovies")) {
+        console.log("popularMovies found in localStorage, skipping fetch from TMDB API");
+        dispatch(setPopularMoviesFromLocalStorage());
+      } else {
+        dispatch(fetchTMDBPopularMovies()); // 'await' not needed because it is an asyncThunk function...
+      }
+    }
+  }, []) // fetch popular movies once when project mounts, and if any page is refreshed
 
  return (
   <>

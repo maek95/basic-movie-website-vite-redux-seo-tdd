@@ -17,7 +17,16 @@ export const popularMoviesSlice = createSlice({
     error: null, // used in asyncThunk
   },
   reducers: {
-    // CRUD not needed here? we just want to GET popular movies
+    // reduce interactions with the API if possible! How do I add a timer on refreshing data?
+    // timer is against Redux best practice since it is dynamic, redux-thunk here?
+    setPopularMoviesFromLocalStorage: (state) => {
+      if (typeof window !== "undefined") {
+        const popularMoviesLocalStorage = localStorage.getItem("popularMovies");
+        state.popularMoviesArr = popularMoviesLocalStorage ? JSON.parse(popularMoviesLocalStorage) : [];
+
+        console.log("populated popularMoviesArr with localStorage data");
+      }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -28,6 +37,9 @@ export const popularMoviesSlice = createSlice({
         state.status = "succeeded";
         state.popularMoviesArr = action.payload; // action.payload is 'getTMDBPopularMovies' returned data
         // immutable due to Immer, don't need to copy array first (...) 
+        if (typeof window !== "undefined") {
+          localStorage.setItem("popularMovies", JSON.stringify(action.payload))
+        }
       })
       .addCase(fetchTMDBPopularMovies.rejected, (state, action) => {
         state.status = "failed";
@@ -35,6 +47,8 @@ export const popularMoviesSlice = createSlice({
       })
   }
 })
+
+export const {setPopularMoviesFromLocalStorage} = popularMoviesSlice.actions;
 
 export default popularMoviesSlice.reducer; // sent to store.jsx
 
