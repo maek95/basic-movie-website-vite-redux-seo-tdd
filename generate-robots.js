@@ -4,9 +4,11 @@ import { promises as fs } from 'fs';
 import dotenv from "dotenv";
 dotenv.config();
 
-
-const isProduction = process.env.ENVIRONMENT === "production";
-const host = process.env.HOST;
+// need dotenv package in node.js files/scripts (Server-side). VITE's import.meta.env wont work here (only works for Client-side)
+const isProduction = process.env.VITE_ENVIRONMENT === "production";
+const host = process.env.VITE_HOST;
+//const isProduction = import.meta.env.VITE_ENVIRONMENT === "production";
+//const host = import.meta.env.VITE_HOST
 
 async function generateRobotsTxt() { // doesnt return anything, just runs scripts
 

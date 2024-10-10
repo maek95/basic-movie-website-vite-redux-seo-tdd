@@ -1,7 +1,8 @@
-import dotenv from "dotenv";
-dotenv.config();
+/* import dotenv from "dotenv";
+dotenv.config(); */
 
-const apiKey = process.env.APIKEY
+// const apiKey = process.env.APIKEY // 
+const apiKey = import.meta.env.VITE_APIKEY // VITE .env import on CLIENT-SIDE
 
 export async function getTMDBPopularMovies() {
   // https://developer.themoviedb.org/reference/movie-popular-list

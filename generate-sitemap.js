@@ -2,14 +2,13 @@ import { SitemapStream, streamToPromise } from "sitemap";
 import { promises as fs } from 'fs'; // async fs?
 import path from 'path';
 import { Readable } from "stream";
-import dotenv from "dotenv";
+import dotenv from "dotenv"; 
 dotenv.config();
-
-
 
 async function getPopularMovieIds() { // used for dynamic movie page sitemaps
 
-  const apiKey = process.env.APIKEY // 
+  const apiKey = process.env.VITE_APIKEY // 
+  // const apiKey = import.meta.env.VITE_APIKEY;
 
   // same function as in apiPopularMovies.jsx ... but couldnt import during build?
   async function getTMDBPopularMovies() {
@@ -36,13 +35,13 @@ async function getPopularMovieIds() { // used for dynamic movie page sitemaps
 
 async function generateSitemap() {
 
-  const host = process.env.HOST // http://localhost:5173 locally, and vercel-url on deployment 
+  const host = process.env.VITE_HOST // http://localhost:5173 locally, and vercel-url on deployment 
+  // const host = import.meta.env.VITE_HOST;
 
   const popularMovieIds = await getPopularMovieIds();
-  const pages = [ 
-    {url: '/', changefreq: 'monthly', priority: 1.0 }, // not ./routes/CartPage .... it shall be the actual route that users will visit.
-    ...popularMovieIds.map(id => ({url: `/movie/${id}`, changefreq: 'weekly', priority: 0.8})) // weekly feels relevant for popular movies, i.e. tell search engines to visit weekly.
-
+  const pages = [ // popularMovieIds for /movie/:id page, otherwise too many pages to crawl.
+    {url: '/', changefreq: 'monthly', priority: 1.0 }, 
+    ...popularMovieIds.map(id => ({url: `/movie/${id}`, changefreq: 'weekly', priority: 0.8})) // changefreq weekly feels relevant for popular movies, i.e. tell search engines to visit weekly.
     //  { url: '/movie/*', changefreq: 'monthly', priority: 0.8 }  // also works, "wildcard", just signals search engines that there are multiple pages under /movie path. 
   ]
 
