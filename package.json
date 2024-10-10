@@ -5,17 +5,21 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "generate-robots": "node generate-robots.js",
+    "generate-sitemap": "node generate-sitemap.js",
+    "build": "npm run generate-robots && npm run generate-sitemap && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
+    "dotenv": "^16.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.26.2",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "sitemap": "^8.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
