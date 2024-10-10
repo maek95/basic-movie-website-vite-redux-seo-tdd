@@ -2,7 +2,7 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config(); //
 
 // need dotenv package in node.js files/scripts (Server-side). VITE's import.meta.env wont work here (only works for Client-side)
 const isProduction = process.env.VITE_ENVIRONMENT === "production";
