@@ -27,6 +27,7 @@ export const favouritedMoviesSlice = createSlice({
       if (typeof window !== "undefined") { 
         localStorage.setItem("favouritedMovies", JSON.stringify(updatedFavourites)); // can't store arrays directly, need JSON string.
       }
+      gtmEventAddedToFavourites(action.payload);
     },
     removeFromFavourites: (state, action) => {
       const updatedFavourites = state.favouritedMoviesArr.filter((movie) => {
@@ -46,3 +47,16 @@ export const favouritedMoviesSlice = createSlice({
 export const { setFavouritesFromLocalStorage, addToFavourites, removeFromFavourites } = favouritedMoviesSlice.actions;
 
 export default favouritedMoviesSlice.reducer; // sent to store.jsx
+
+function gtmEventAddedToFavourites(movie) {
+  if (typeof window !== "undefined" && typeof window.dataLayer !== "undefined") {
+    window.dataLayer.push({
+      event: 'add_to_favourites',
+      event_category: 'User Interaction',
+      event_label: 'Add to Favourites',
+      movie_id: movie.id,
+      movie_title: movie.title,
+      value: 1
+    });
+  }
+};
