@@ -17,7 +17,7 @@ import ReactGA from 'react-ga4'
 const gtmId = import.meta.env.VITE_GTM_ID;
 const gaId = import.meta.env.VITE_GA_ID;
 
-if (gtmId) {
+if (gtmId) { //
   // Initialize Google Tag Manager
   const tagManagerArgs = { gtmId };
   TagManager.initialize(tagManagerArgs);
