@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+     <!-- meta tags and title gets overwritten by HomePage or other pages' description, if they have the same type of meta tags -->
+    <meta
+    name="description"
+    content="Welcome to my basic movie page using TMDB API" 
+    />
+    <title>Movies</title>
   </head>
   <body>
     <div id="root"></div>
-    <!-- TMDB a97f158a2149d8f803423ee01dec4d83 -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

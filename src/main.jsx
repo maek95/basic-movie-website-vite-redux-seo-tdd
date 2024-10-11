@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store.jsx'
 import TagManager from 'react-gtm-module';
 import ReactGA from 'react-ga4' 
+import { HelmetProvider } from 'react-helmet-async'
 
 
 // https://www.npmjs.com/package/react-gtm-module
@@ -35,9 +36,11 @@ if (gaId) {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App /> 
-      </Provider>
+      <HelmetProvider>
+        <Provider store={store}>
+          <App /> 
+        </Provider>
+      </HelmetProvider>
     </BrowserRouter>
   </StrictMode>,
 )

@@ -22,6 +22,7 @@ export const popularMoviesSlice = createSlice({
     setPopularMoviesFromLocalStorage: (state) => {
       if (typeof window !== "undefined") {
         const popularMoviesLocalStorage = localStorage.getItem("popularMovies");
+       
         state.popularMoviesArr = popularMoviesLocalStorage ? JSON.parse(popularMoviesLocalStorage) : [];
 
         console.log("populated popularMoviesArr with localStorage data");

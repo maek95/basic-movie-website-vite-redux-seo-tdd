@@ -13,8 +13,10 @@ function App() {
   
   useEffect(() => {
     if (typeof window !== "undefined") {
-
-      if (localStorage.getItem("popularMovies")) {
+      const popularMoviesLocalStorage = localStorage.getItem("popularMovies");
+ 
+        // sometimes localStorage stores 'undefined' as a String...
+      if (popularMoviesLocalStorage && popularMoviesLocalStorage !== "undefined" && popularMoviesLocalStorage !== "null") {
         console.log("popularMovies found in localStorage, skipping fetch from TMDB API");
         dispatch(setPopularMoviesFromLocalStorage());
       } else {
