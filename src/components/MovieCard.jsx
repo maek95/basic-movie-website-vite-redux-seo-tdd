@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addToFavourites, removeFromFavourites } from "../redux/FavouritedMoviesSlice";
+import { Link } from "react-router-dom";
 
 export default function MovieCard({movieObject}) {
 
@@ -10,7 +11,6 @@ export default function MovieCard({movieObject}) {
 
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
 
-  
   if (!movieObject || !favouritedMoviesArr) {
     <div>
       Loading movie...
@@ -24,15 +24,19 @@ export default function MovieCard({movieObject}) {
     setIsFavourited(isFavourite);
   }, [favouritedMoviesArr])
  
-  return (
-    <div className="border-[0.5px] border-solid border-white p-4 w-32 h-96 break-words flex flex-col justify-between">
-      <h3>title: {movieObject.title}</h3>
-      <img src={`${movieObject.poster_path && `${baseImageUrl}${movieObject.poster_path}`}`} alt="" />
-      {!isFavourited ? <button onClick={() => {
-        dispatch(addToFavourites(movieObject))
-      }}>Add</button> : <button onClick={() => {
-        dispatch(removeFromFavourites(movieObject.id))
-      }}>Remove</button>}
-    </div>
+  return ( 
+      <div className="border-[0.5px] border-solid border-white p-4 w-32 h-96 break-words flex flex-col justify-between">
+        {/* // MovieLink class is just for Cypress to easily find a link to a detailed movie page */}
+        <Link className="MovieLink object-cover text-inherit no-underline hover:text-inherit hover:opacity-55" to={`/movie/${movieObject.id}`}>
+          <h3 className="whitespace-normal break-words font-semibold sliced-text">{movieObject.title}</h3>
+          <img className="w-32" src={`${movieObject.poster_path && `${baseImageUrl}${movieObject.poster_path}`}`} alt="" />
+        </Link>
+       
+        {!isFavourited ? <button onClick={() => {
+          dispatch(addToFavourites(movieObject))
+        }}>Add</button> : <button onClick={() => {
+          dispatch(removeFromFavourites(movieObject.id))
+        }}>Remove</button>}
+      </div>
   )
 }

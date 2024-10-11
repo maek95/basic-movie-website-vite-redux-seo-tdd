@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react"
-import {  getTMDBPopularMovies } from "../api/apiPopularMovies";
-import { useSelector } from "react-redux";
-import PopularSlideMenu from "../components/slidemenus/PopularSlideMenu";
-import FavouritesSlideMenu from "../components/slidemenus/FavouritesSlideMenu";
 import { Helmet } from "react-helmet-async";
+import PopularSection from "../components/sections/popular/PopularSection";
+import FavouritesSection from "../components/sections/favourites/FavouritesSection";
+import SearchMovieField from "../components/sections/searchmovies/SearchMovieField";
 
 
 export default function HomePage() {
@@ -33,10 +31,14 @@ export default function HomePage() {
       {/* TODO: import NavBar with the search-bar... fetch specific movies from the API */}
         
       <h1>Movie Website</h1>
+      <div className="block min-h-[420px]">
+        <SearchMovieField/> 
+        
+      </div>
       <div className="">
        
-        <PopularSlideMenu/>
-        <FavouritesSlideMenu/>
+        <PopularSection/>
+        <FavouritesSection/>
       </div>
       
     </>

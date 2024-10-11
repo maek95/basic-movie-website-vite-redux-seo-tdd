@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SlideMenu from "./SlideMenu";
-import MovieCard from "../MovieCard";
-import { setFavouritesFromLocalStorage } from "../../redux/FavouritedMoviesSlice";
+import MovieCard from "../../MovieCard";
+import { setFavouritesFromLocalStorage } from "../../../redux/FavouritedMoviesSlice";
+import SectionLayout from "../SectionLayout";
 
-export default function FavouritesSlideMenu() {
+export default function FavouritesSection() {
 
   const { favouritedMoviesArr } = useSelector(state => state.favouritedMovies)
   const dispatch = useDispatch();
@@ -28,14 +28,14 @@ export default function FavouritesSlideMenu() {
   
   return (
     <>
-      <h2>My Favourites</h2>
-      <SlideMenu>
+      <h2 className="text-center md:text-start">My Favourites</h2>
+      <SectionLayout>
         {favouritedMoviesArr.map((movie, index) => {
           return (
             <MovieCard key={index} movieObject={movie}/>
           )
         })}
-      </SlideMenu>
+      </SectionLayout>
     </>
   )
 }

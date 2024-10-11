@@ -31,7 +31,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3rem;
   line-height: 1.1;
 }
 
@@ -54,6 +54,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.sliced-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to display... make sure to not have a set height on the text-element (<h2>)!*/
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -65,4 +73,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.4rem;
+  }
+  
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.6rem;
+  }
+  
 }
