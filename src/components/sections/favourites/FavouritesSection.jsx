@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MovieCard from "../../MovieCard";
 import { setFavouritesFromLocalStorage } from "../../../redux/FavouritedMoviesSlice";
-import SectionLayout from "../SectionLayout";
+import SlideMenuAndFlexWrap from "../SlideMenuAndFlexWrap";
 
 export default function FavouritesSection() {
 
@@ -29,13 +29,13 @@ export default function FavouritesSection() {
   return (
     <>
       <h2 className="text-center md:text-start">My Favourites</h2>
-      <SectionLayout>
+      <SlideMenuAndFlexWrap>
         {favouritedMoviesArr.map((movie, index) => {
           return (
             <MovieCard key={index} movieObject={movie}/>
           )
         })}
-      </SectionLayout>
+      </SlideMenuAndFlexWrap>
     </>
   )
 }

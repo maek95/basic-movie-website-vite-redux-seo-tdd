@@ -49,7 +49,7 @@ export const popularMoviesSlice = createSlice({
   }
 })
 
-export const {setPopularMoviesFromLocalStorage} = popularMoviesSlice.actions;
+export const {setPopularMoviesFromLocalStorage } = popularMoviesSlice.actions;
 
 export default popularMoviesSlice.reducer; // sent to store.jsx
 
