@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet-async";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../api/apiMovieDetails";
 import MovieCard from "../components/MovieCard";
+import BackButton from "../components/BackButton";
+import NavBar from "../components/sections/navbar/NavBar";
+import { useDispatch } from "react-redux";
+import { addToVisitedMovies } from "../redux/VisitedMoviesSlice";
 
 export default function MoviePage() { 
   const { id } = useParams(); /* TODO: use id to send a GET request to TMDB API for more info */ 
                                 /* Technically I could extract the movie object from my PopularMovieArr or FavouritedMovieArr... if that is what ill only use...?   */
-  const navigate = useNavigate();
   const [movieDetails, setMovieDetails] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchDetails() {
@@ -16,6 +20,7 @@ export default function MoviePage() {
       const movieObject = await getMovieDetails(id);
 
       setMovieDetails(movieObject);
+      dispatch(addToVisitedMovies(movieObject));
     }
     fetchDetails();
   }, [])
@@ -76,7 +81,7 @@ export default function MoviePage() {
     }
     
     return (
-      <div className="p-8">
+      <div className="min-h-dvh z-40">
         <Helmet> {/* TODO:  */}
           <title>{movieDetails.title}</title>
           <meta name="description" content={`${movieDetails.description}`} />
@@ -88,16 +93,20 @@ export default function MoviePage() {
           <meta name="twitter:description" content={`Read about ${movieDetails.title}`} />
           <meta property="twitter:image" content={`${movieDetails.poster}`} /> {/* hopefully not too large image? */}
         </Helmet>
-        <button onClick={() => navigate(-1)}>
-          {"<-"}Home
-        </button>          
+        <NavBar/>
+
+        <main className="p-4">
+
+
+          <BackButton/>
+                
         <h1 className="text-center md:text-start">{movieDetails.title}</h1>
         <div className="flex gap-4 md:gap-12 flex-col md:flex-row">
           <div className="flex justify-center">
 
             <MovieCard movieObject={movieDetails}/> 
           </div>
-          <div className="w-full md:w-96">
+          <div className="w-full md:w-96 ">
             <h3>Release Date</h3>
             <p>{movieDetails.release_date}</p>
             <h3>Overview</h3>
@@ -106,6 +115,7 @@ export default function MoviePage() {
 
           </div>
         </div>
+        </main>
         
       </div>
     )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { querySearchMovie } from "../../../api/apiMovieQuery";
 import MovieCard from "../../MovieCard";
-import SectionLayout from "../SectionLayout";
+import SlideMenu from "../SlideMenu";
 
 export default function SearchMovieField() {
 
@@ -32,13 +32,12 @@ export default function SearchMovieField() {
 
   return (
     <>
-      <input className="p-4 w-96 text-lg" type="text" onChange={handleChange} />
-      <br/>
-        <SectionLayout> {/* TODO: make a scrollable drop-down instead */}
-        {movieResults && movieResults.length > 0 && movieResults.map((movie) => {
+      <input placeholder="Search for a movie..." id="movieSearch" className="p-4 w-96 text-lg mb-4" type="text" onChange={handleChange} />
+        {movieResults && movieResults.length > 0 && <SlideMenu> 
+        {movieResults.map((movie) => {
           return <MovieCard movieObject={movie}/>
         })}
-        </SectionLayout>
+        </SlideMenu>}
     </>
   )
 }

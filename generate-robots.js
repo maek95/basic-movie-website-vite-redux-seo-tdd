@@ -16,6 +16,7 @@ async function generateRobotsTxt() { // doesnt return anything, just runs script
   const robotsTxtContent = `
   User-agent: *
   Disallow: ${isProduction ? '/movies?sort=*' : ''}
+  Disallow: /mypage
   Disallow: /admin
   Allow: /
 
