@@ -84,13 +84,13 @@ export default function MoviePage() {
       <div className="min-h-dvh z-40">
         <Helmet> {/* TODO:  */}
           <title>{movieDetails.title}</title>
-          <meta name="description" content={`${movieDetails.description}`} />
+          <meta property="description" content={`${movieDetails.description}`} />
           {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
           <meta property="og:description" content={`Read about ${movieDetails.title}`} />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${movieDetails.poster}`} />
           {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
-          <meta name="twitter:description" content={`Read about ${movieDetails.title}`} />
+          <meta property="twitter:description" content={`Read about ${movieDetails.title}`} />
           <meta property="twitter:image" content={`${movieDetails.poster}`} /> {/* hopefully not too large image? */}
         </Helmet>
         <NavBar/>

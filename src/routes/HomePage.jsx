@@ -19,14 +19,14 @@ export default function HomePage() {
     <div className="min-h-dvh z-40">
       <Helmet> {/* is it unnecessary to use Helmet on HomePage, could just place this in the head of index.html ? */}
           <title>Movies Startpage</title>
-          <meta name="description" content="Startpage of basic-movie-page using TMDB API" />
+          <meta property="description" content="Startpage of basic-movie-page using TMDB API" />
           <meta property="og:title" content="Movies - HomePage" />
           <meta property="og:description" content="view movies using TMDB API" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
-          <meta name="twitter:title" content="Movies - Home" />
-          <meta name="twitter:description" content="view movies using TMDB API" />
-          <meta name="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
+          <meta property="twitter:title" content="Movies - Home" />
+          <meta property="twitter:description" content="view movies using TMDB API" />
+          <meta property="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
         </Helmet>      
       {/* TODO: import NavBar with the search-bar... fetch specific movies from the API */}
       <NavBar/>

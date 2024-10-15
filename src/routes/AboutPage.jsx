@@ -39,14 +39,14 @@ export default function AboutPage() {
     <div className="min-h-dvh">
       <Helmet> {/* is it unnecessary to use Helmet on HomePage, could just place this in the head of index.html ? */}
           <title>Movies About page</title>
-          <meta name="description" content="About basic-movie-page - a movie page using TMDB API" />
+          <meta property="description" content="About basic-movie-page - a movie page using TMDB API" />
           <meta property="og:title" content="Movies - AboutPage" />
           <meta property="og:description" content="Read about us - movie page using TMDB API" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
-          <meta name="twitter:title" content="Movies - About" />
-          <meta name="twitter:description" content="About us - movie page using TMDB API" />
-          <meta name="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
+          <meta property="twitter:title" content="Movies - About" />
+          <meta property="twitter:description" content="About us - movie page using TMDB API" />
+          <meta property="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
         </Helmet>    
       <NavBar/>
       <main className="p-4">
