@@ -90,6 +90,7 @@ export default function MoviePage() {
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${movieDetails.poster}`} />
           {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
+          <meta property="twitter:card" content="summary_large_image"/> {/* The summary_large_image option tells Twitter to show a large preview image. */}
           <meta property="twitter:description" content={`Read about ${movieDetails.title}`} />
           <meta property="twitter:image" content={`${movieDetails.poster}`} /> {/* hopefully not too large image? */}
         </Helmet>

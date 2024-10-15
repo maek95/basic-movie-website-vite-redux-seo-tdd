@@ -24,6 +24,7 @@ export default function HomePage() {
           <meta property="og:description" content="view movies using TMDB API" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
+          <meta property="twitter:card" content="summary_large_image"/> {/* The summary_large_image option tells Twitter to show a large preview image. */}
           <meta property="twitter:title" content="Movies - Home" />
           <meta property="twitter:description" content="view movies using TMDB API" />
           <meta property="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
