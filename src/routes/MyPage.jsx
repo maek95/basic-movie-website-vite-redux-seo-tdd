@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet-async";
 import BackButton from "../components/BackButton";
 import FavouritesSection from "../components/sections/favourites/FavouritesSection";
 import NavBar from "../components/sections/navbar/NavBar";
-import { useSelector } from "react-redux";
 import VisitedMoviesSection from "../components/sections/visitedmovies/VisitedMoviesSection";
 
 export default function MyPage() {
@@ -17,6 +16,7 @@ export default function MyPage() {
           <meta property="og:description" content="My page - show my favourites and more" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
+          <meta name="twitter:card" content="summary_large_image"/> {/* The summary_large_image option tells Twitter to show a large preview image. */}
           <meta name="twitter:title" content="Movies - MyPage" />
           <meta name="twitter:description" content="My page - show my favourites" />
           <meta name="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />

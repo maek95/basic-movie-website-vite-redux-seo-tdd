@@ -44,6 +44,7 @@ export default function AboutPage() {
           <meta property="og:description" content="Read about us - movie page using TMDB API" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />
+          <meta name="twitter:card" content="summary_large_image"/> {/* The summary_large_image option tells Twitter to show a large preview image. */}
           <meta name="twitter:title" content="Movies - About" />
           <meta name="twitter:description" content="About us - movie page using TMDB API" />
           <meta name="twitter:image" content={`${import.meta.env.VITE_HOST}/basic-movie-page-logo.png`} />

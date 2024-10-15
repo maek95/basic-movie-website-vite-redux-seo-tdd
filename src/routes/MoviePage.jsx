@@ -84,14 +84,15 @@ export default function MoviePage() {
       <div className="min-h-dvh z-40">
         <Helmet> {/* TODO:  */}
           <title>{movieDetails.title}</title>
-          <meta name="description" content={`${movieDetails.description}`} />
+          <meta name="description" content={`${movieDetails.overview}`} />
           {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
           <meta property="og:description" content={`Read about ${movieDetails.title}`} />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={`${movieDetails.poster}`} />
           {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
+          <meta name="twitter:card" content="summary_large_image"/> {/* The summary_large_image option tells Twitter to show a large preview image. */}
           <meta name="twitter:description" content={`Read about ${movieDetails.title}`} />
-          <meta property="twitter:image" content={`${movieDetails.poster}`} /> {/* hopefully not too large image? */}
+          <meta name="twitter:image" content={`${movieDetails.poster}`} /> {/* hopefully not too large image? */}
         </Helmet>
         <NavBar/>
 
