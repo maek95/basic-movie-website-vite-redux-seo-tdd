@@ -1,7 +1,3 @@
-To write your README, here's an outline based on the information provided:
-
----
-
 # Basic Movie Website - Vite + React
 
 A movie browsing app built with **VITE** and **React** that utilizes the **TMDB API** to fetch and display movie data. Users can search for movies, view popular movies, favorite their selections, and track individual movie page visits.
