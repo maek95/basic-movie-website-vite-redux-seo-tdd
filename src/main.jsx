@@ -21,7 +21,7 @@ const gaId = import.meta.env.VITE_GA_ID;
 if (gtmId) { //
   // Initialize Google Tag Manager
   const tagManagerArgs = { gtmId };
-  TagManager.initialize(tagManagerArgs);
+  TagManager.initialize(tagManagerArgs); //
 } else {
   console.warn('Google Tag Manager ID (VITE_GTM_ID) is not set in environment variables.');
 }
