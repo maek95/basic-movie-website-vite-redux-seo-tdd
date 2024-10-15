@@ -17,9 +17,8 @@ describe('Dynamic Movie Page', () => {
         // Verify that the URL contains the correct movie ID
         cy.url().should('include', href);
 
-        // Optionally, you can check if the movie details page is displaying the correct data
-        // cy.get('h1').should('contain', 'Movie Title'); // Replace 'Movie Title' with the expected title
-        cy.get('button').should('contain', 'Home'); // Replace 'Movie Title' with the expected title
+        // check if there is a button containing the text 'Back' (see <BackButton> component)
+        cy.get('button').should('contain', 'Back'); 
       });
   });
 });
