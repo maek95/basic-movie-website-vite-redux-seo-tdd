@@ -1,4 +1,4 @@
-export default function SectionLayout({children}) {
+export default function SlideMenuAndFlexWrap({children}) {
 
   return (
     <> {/* flex-wrap on desktop, slidemenu on mobile */}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import MovieCard from "../../MovieCard";
-import SectionLayout from "../SectionLayout";
+import SlideMenu from "../SlideMenu";
 
 export default function PopularSection() {
 
@@ -23,13 +23,13 @@ export default function PopularSection() {
   return (
     <>
       <h2 className="text-center md:text-start">Popular Movies</h2>
-      <SectionLayout>
+      <SlideMenu>
         {popularMoviesArr.map((movie, index) => {
           return (
             <MovieCard key={index} movieObject={movie}/>
           )
         })}
-      </SectionLayout>
+      </SlideMenu>
     </>
   )
 }
