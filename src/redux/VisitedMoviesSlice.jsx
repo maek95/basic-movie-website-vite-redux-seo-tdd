@@ -16,6 +16,8 @@ export const visitedMoviesSlice = createSlice({
         const visitedMoviesLocalStorage = localStorage.getItem("visitedMovies"); 
 
         state.visitedMoviesArr = visitedMoviesLocalStorage ? JSON.parse(visitedMoviesLocalStorage) : []; // JSON parse because data is stored as a JSON string in localStorage. Fallback array [] if it no data found.
+
+        console.log("populated visitedMoviesArr with localStorage data: ", state.visitedMoviesArr);
       }
     },
     addToVisitedMovies: (state, action) => {

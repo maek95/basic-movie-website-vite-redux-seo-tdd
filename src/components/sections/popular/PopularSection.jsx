@@ -7,10 +7,10 @@ export default function PopularSection() {
 
   const { popularMoviesArr } = useSelector(state => state.popularMovies)
 
-  useEffect(() => {
+  /* useEffect(() => {
 
     console.log("popularMoviesArr:", popularMoviesArr);
-  }, [popularMoviesArr])
+  }, [popularMoviesArr]) */
 
   if (!popularMoviesArr || popularMoviesArr.length < 1) {
     <>

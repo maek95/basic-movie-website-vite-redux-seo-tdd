@@ -16,6 +16,7 @@ export const favouritedMoviesSlice = createSlice({
         const favouritedMoviesLocalStorage = localStorage.getItem("favouritedMovies"); 
 
         state.favouritedMoviesArr = favouritedMoviesLocalStorage ? JSON.parse(favouritedMoviesLocalStorage) : []; // JSON parse because data is stored as a JSON string in localStorage. Fallback array [] if it no data found.
+        console.log("populated favouritedMoviesArr with localStorage data", state.favouritedMoviesArr);
       }
     },
     addToFavourites: (state, action) => {
