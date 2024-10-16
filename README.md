@@ -90,7 +90,8 @@ The project uses **Tailwind CSS** for styling. The app is responsive and optimiz
 
 ## Technical SEO
 
-The project includes dynamic generation of `robots.txt` and `sitemap.xml` to optimize SEO:
+The project includes dynamic generation of `robots.txt` and `sitemap.xml` to optimize SEO.
+`generate-robots.js` and `generate-sitemap.js` run automatically with `npm run build`.
 
 - **robots.txt**: Specifies that search engines should avoid crawling `/mypage` and limit crawling of dynamic movie pages to only the popular movies defined in sitemap.xml.
 - **sitemap.xml**: Includes the home page, about page, and a few dynamic movie pages to guide search engines.
