@@ -73,6 +73,9 @@ LocalStorage is used to persist data in all these slices during page reloads.
 
 ## Testing
 
+ ```
+   npx cypress open
+   ```
 End-to-end testing is handled using **Cypress**. There are two main tests:
 
 1. **Movie Page Navigation and Title Verification**:
