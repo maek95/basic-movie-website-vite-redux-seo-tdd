@@ -70,9 +70,7 @@ Global state is managed using **Redux Toolkit** with three main slices:
 - **VisitedMoviesSlice**: Tracks which movie pages a user has visited.
 
 `localStorage` is used to persist data in all these slices during page reloads.
-   In `App.jsx` there is an `useEffect` that searches localStorage for    
-   `popularMovies`, `favouritedMovies`, `visitedMovies`, if they are found they 
-   are dispatched to their respective Redux Slice.
+   In `App.jsx` there is an `useEffect` that searches localStorage for `popularMovies`, `favouritedMovies`, `visitedMovies`, if they are found they are dispatched to their respective Redux Slice.
 
 ## Testing
 
