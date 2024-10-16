@@ -61,7 +61,7 @@ The app uses `react-router-dom` for routing. All routes are declared in `App.jsx
 - **About Page ('/about')**: Contains additional information about the website. It also displays movie posters of the top 10 popular movies.
 - **Movie Page ('/movie/:id')**: Dynamic route displaying details about an individual movie.
 
-## Global State Management
+## Global State Management and localStorage
 
 Global state is managed using **Redux Toolkit** with three main slices:
 
@@ -69,7 +69,10 @@ Global state is managed using **Redux Toolkit** with three main slices:
 - **FavouritedMoviesSlice**: Manages favourite movies. These are displayed on the home page and the user's personal page.
 - **VisitedMoviesSlice**: Tracks which movie pages a user has visited.
 
-LocalStorage is used to persist data in all these slices during page reloads.
+`localStorage` is used to persist data in all these slices during page reloads.
+   In `App.jsx` there is an `useEffect` that searches localStorage for    
+   `popularMovies`, `favouritedMovies`, `visitedMovies`, if they are found they 
+   are dispatched to their respective Redux Slice.
 
 ## Testing
 
