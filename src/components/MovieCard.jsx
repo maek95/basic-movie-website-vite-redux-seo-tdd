@@ -9,7 +9,7 @@ export default function MovieCard({movieObject}) {
   const [isFavourited, setIsFavourited] = useState(false);
   const dispatch = useDispatch();
 
-  console.log("movieObject: ", movieObject);
+  //console.log("movieObject: ", movieObject);
   
 
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";

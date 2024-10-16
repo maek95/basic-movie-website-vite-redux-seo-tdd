@@ -41,6 +41,7 @@ async function generateSitemap() {
   const popularMovieIds = await getPopularMovieIds();
   const pages = [ // popularMovieIds for /movie/:id page, otherwise too many pages to crawl.
     {url: '/', changefreq: 'monthly', priority: 1.0 }, 
+    {url: '/about', changefreq: 'monthly', priority: 0.8 },  // do not crawl mypage? {url: '/mypage', changefreq: 'monthly', priority: 0.8 }, 
     ...popularMovieIds.map(id => ({url: `/movie/${id}`, changefreq: 'weekly', priority: 0.8})) // changefreq weekly feels relevant for popular movies, i.e. tell search engines to visit weekly.
     //  { url: '/movie/*', changefreq: 'monthly', priority: 0.8 }  // also works, "wildcard", just signals search engines that there are multiple pages under /movie path. 
   ]
@@ -71,7 +72,6 @@ generateSitemap(); // Will run on build, Search engines use your sitemap to disc
   "build": "npm run generate-sitemap && vite build"
 }
  */
-// robots.txt ... do we generate that as well?
 
 
 // https://yourdomain.com/sitemap.xml

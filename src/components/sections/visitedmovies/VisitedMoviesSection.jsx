@@ -7,10 +7,10 @@ export default function VisitedMoviesSection() {
 
   const { visitedMoviesArr } = useSelector(state => state.visitedMovies)
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log("visitedMoviesArr:", visitedMoviesArr);
     
-  }, [visitedMoviesArr])
+  }, [visitedMoviesArr]) */
 
   return (
     <>

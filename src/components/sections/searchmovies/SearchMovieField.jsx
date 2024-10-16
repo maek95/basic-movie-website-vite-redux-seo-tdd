@@ -25,14 +25,14 @@ export default function SearchMovieField() {
 
   }, [queryInput])
 
-  useEffect(() => {
+ /*  useEffect(() => {
     console.log("movieResults: ", movieResults);
     
-  }, [movieResults])
+  }, [movieResults]) */
 
   return (
     <>
-      <input placeholder="Search for a movie..." id="movieSearch" className="p-4 w-96 text-lg mb-4" type="text" onChange={handleChange} />
+      <input placeholder="Search for a movie..." id="movieSearch" className="p-4 w-64 md:w-80 lg:w-96 text-lg mb-4" type="text" onChange={handleChange} />
         {movieResults && movieResults.length > 0 && <SlideMenu> 
         {movieResults.map((movie) => {
           return <MovieCard movieObject={movie}/>

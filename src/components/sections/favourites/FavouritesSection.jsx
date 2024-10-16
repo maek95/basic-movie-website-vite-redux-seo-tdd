@@ -21,10 +21,10 @@ export default function FavouritesSection() {
     </>
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
 
     console.log("favouritedMoviesArr:", favouritedMoviesArr);
-  }, [favouritedMoviesArr])
+  }, [favouritedMoviesArr]) */
   
   return (
     <>

@@ -20,7 +20,7 @@ function App() {
  
         // sometimes localStorage stores 'undefined' as a String...
       if (popularMoviesLocalStorage && popularMoviesLocalStorage !== "undefined" && popularMoviesLocalStorage !== "null") {
-        console.log("popularMovies found in localStorage, dispatching to redux, skipping fetch from TMDB API");
+        //console.log("popularMovies found in localStorage, dispatching to redux, skipping fetch from TMDB API");
         dispatch(setPopularMoviesFromLocalStorage());
       } else {
         dispatch(fetchTMDBPopularMovies()); // 'await' not needed because it is an asyncThunk function...?
@@ -29,7 +29,7 @@ function App() {
       const visitedMoviesFromLocalStorage = localStorage.getItem("visitedMovies");
 
       if (visitedMoviesFromLocalStorage && visitedMoviesFromLocalStorage !== "undefined" && visitedMoviesFromLocalStorage !== "null") {
-        console.log("visitedMovies found in localStorage, dispatching to redux");
+       // console.log("visitedMovies found in localStorage, dispatching to redux");
         dispatch(setVisitedMoviesFromLocalStorage());
       } else {
         console.log("visitedMovies in localStorage is empty or doesn't exist");

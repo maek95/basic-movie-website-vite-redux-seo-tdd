@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../api/apiMovieDetails";
 import MovieCard from "../components/MovieCard";
 import BackButton from "../components/BackButton";
-import NavBar from "../components/sections/navbar/NavBar";
+import NavBar from "../components/navbar/NavBar";
 import { useDispatch } from "react-redux";
 import { addToVisitedMovies } from "../redux/VisitedMoviesSlice";
 

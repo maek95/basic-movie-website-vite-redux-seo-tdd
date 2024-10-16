@@ -25,7 +25,7 @@ export const popularMoviesSlice = createSlice({
        
         state.popularMoviesArr = popularMoviesLocalStorage ? JSON.parse(popularMoviesLocalStorage) : [];
 
-        console.log("populated popularMoviesArr with localStorage data");
+        console.log("populated popularMoviesArr with localStorage data, skipped fetch from TMDB API", state.popularMoviesArr);
       }
     }
   },

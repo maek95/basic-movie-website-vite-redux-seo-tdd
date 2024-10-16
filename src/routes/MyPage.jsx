@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import BackButton from "../components/BackButton";
 import FavouritesSection from "../components/sections/favourites/FavouritesSection";
-import NavBar from "../components/sections/navbar/NavBar";
 import VisitedMoviesSection from "../components/sections/visitedmovies/VisitedMoviesSection";
+import NavBar from "../components/navbar/NavBar";
 
 export default function MyPage() {
 

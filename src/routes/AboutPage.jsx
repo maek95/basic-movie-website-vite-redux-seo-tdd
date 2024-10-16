@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import BackButton from "../components/BackButton";
 import { useEffect, useState } from "react";
-import NavBar from "../components/sections/navbar/NavBar";
 import { Helmet } from "react-helmet-async";
+import NavBar from "../components/navbar/NavBar";
 
 export default function AboutPage() {
 
@@ -15,7 +15,7 @@ export default function AboutPage() {
     
     if (popularMoviesArr && popularMoviesArr.length > 0) {
 
-      console.log(popularMoviesArr);
+      //console.log(popularMoviesArr);
 
       // if-statement so we stop populating popularImgSrcArr once it has copied all the imgSrc in popularMoviesArr.
       // Otherwise we might get duplicates during re-render
