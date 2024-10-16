@@ -53,6 +53,15 @@ To install and run the project locally:
 - **Tailwind CSS**: For styling and responsiveness.
 - **Google Tag Manager** and **Google Analytics**: For tracking and analytics.
 
+## TMDB API
+https://developer.themoviedb.org/reference/intro/getting-started
+API-fetches are located in `src/api`
+
+Endpoints information:
+- **Movie Details**: https://developer.themoviedb.org/reference/movie-details
+- **Search Query**: https://developer.themoviedb.org/reference/search-movie
+- **Popular Movies**: https://developer.themoviedb.org/reference/movie-popular-list
+
 ## Routing
 
 The app uses `react-router-dom` for routing. All routes are declared in `App.jsx`.
