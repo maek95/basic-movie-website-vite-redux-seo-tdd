@@ -4,8 +4,7 @@ import MovieCard from "../../MovieCard";
 import SlideMenu from "../SlideMenu";
 
 export default function PopularSection() {
-
-  const { popularMoviesArr } = useSelector(state => state.popularMovies)
+  const { popularMoviesArr } = useSelector((state) => state.popularMovies);
 
   /* useEffect(() => {
 
@@ -14,22 +13,18 @@ export default function PopularSection() {
 
   if (!popularMoviesArr || popularMoviesArr.length < 1) {
     <>
-      <div>
-        Loading popular movies...
-      </div>
-    </>
+      <div>Loading popular movies...</div>
+    </>;
   }
-  
+
   return (
     <>
       <h2 className="text-center md:text-start">Popular Movies</h2>
       <SlideMenu>
         {popularMoviesArr.map((movie, index) => {
-          return (
-            <MovieCard key={index} movieObject={movie}/>
-          )
+          return <MovieCard key={index} movieObject={movie} />;
         })}
       </SlideMenu>
     </>
-  )
+  );
 }

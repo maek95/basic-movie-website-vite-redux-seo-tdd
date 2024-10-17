@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../api/apiMovieDetails";
@@ -8,27 +8,26 @@ import NavBar from "../components/navbar/NavBar";
 import { useDispatch } from "react-redux";
 import { addToVisitedMovies } from "../redux/VisitedMoviesSlice";
 
-export default function MoviePage() { 
-  const { id } = useParams(); /* TODO: use id to send a GET request to TMDB API for more info */ 
-                                /* Technically I could extract the movie object from my PopularMovieArr or FavouritedMovieArr... if that is what ill only use...?   */
+export default function MoviePage() {
+  const { id } =
+    useParams(); /* TODO: use id to send a GET request to TMDB API for more info */
+  /* Technically I could extract the movie object from my PopularMovieArr or FavouritedMovieArr... if that is what ill only use...?   */
   const [movieDetails, setMovieDetails] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchDetails() {
-      
       const movieObject = await getMovieDetails(id);
 
       setMovieDetails(movieObject);
       dispatch(addToVisitedMovies(movieObject));
     }
     fetchDetails();
-  }, [])
+  }, []);
 
   useEffect(() => {
     console.log("movieDetails:", movieDetails);
-    
-  }, [movieDetails])
+  }, [movieDetails]);
 
   // JSON-LD for better google search (rich snippets in search engine result). Nextjs' Metadata API does not include JSON-LD
   // "This structured data improves the chances of your site appearing in rich results (e.g., star ratings, images, and reviews) in search engine results, making your page more attractive to users."
@@ -37,15 +36,15 @@ export default function MoviePage() {
       const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Movie",
-        "name": movieDetails.title,
-        "image": movieDetails.poster, // Poster image URL
-        "description": movieDetails.overview,
-        "datePublished": movieDetails.release_date, 
-        "aggregateRating": {
+        name: movieDetails.title,
+        image: movieDetails.poster, // Poster image URL
+        description: movieDetails.overview,
+        datePublished: movieDetails.release_date,
+        aggregateRating: {
           "@type": "AggregateRating",
-          "ratingValue": movieDetails.voteAverage,
-          "bestRating": "10",
-          "ratingCount": movieDetails.voteCount,
+          ratingValue: movieDetails.voteAverage,
+          bestRating: "10",
+          ratingCount: movieDetails.voteCount,
         },
         /* "director": { // different fetch
           "@type": "Person",
@@ -55,8 +54,8 @@ export default function MoviePage() {
           "@type": "Person",
           "name": actor.name,
         })), */
-        "genre": movieDetails.genres?.join(", ") || "", // no genres exist in movieDetails objects at the moment.
-        "duration": `PT${movieDetails.runtime}M`, // ISO 8601 duration format
+        genre: movieDetails.genres?.join(", ") || "", // no genres exist in movieDetails objects at the moment.
+        duration: `PT${movieDetails.runtime}M`, // ISO 8601 duration format
       };
 
       const script = document.createElement("script");
@@ -70,42 +69,50 @@ export default function MoviePage() {
       };
     }
   }, [movieDetails]); // credits should also be a trigger if used later!
-  
 
-    if (!movieDetails) {
-      return (
-        <div className="h-lvh w-full justify-center items-center">
-          <h1>Loading Movie Details...</h1>
-        </div>
-      )
-    }
-    
+  if (!movieDetails) {
     return (
-      <div className="min-h-dvh z-40">
-        <Helmet> {/* TODO:  */}
-          <title>{movieDetails.title}</title>
-          <meta name="description" content={`${movieDetails.overview}`} />
-          {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
-          <meta property="og:description" content={`Read about ${movieDetails.title}`} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={`${movieDetails.poster}`} />
-          {/* <meta property="og:title" content={`${movieDetails.title}`} /> */} {/* not different from <title> */}
-          <meta name="twitter:card" content="summary_large_image"/> {/* The summary_large_image option tells Twitter to show a large preview image. */}
-          <meta name="twitter:description" content={`Read about ${movieDetails.title}`} />
-          <meta name="twitter:image" content={`${movieDetails.poster}`} /> {/* hopefully not too large image? */}
-        </Helmet>
-        <NavBar/>
+      <div className="h-lvh w-full justify-center items-center">
+        <h1>Loading Movie Details...</h1>
+      </div>
+    );
+  }
 
-        <main className="p-4">
+  return (
+    <div className="min-h-dvh z-40">
+      <Helmet>
+        {" "}
+        {/* TODO:  */}
+        <title>{movieDetails.title}</title>
+        <meta name="description" content={`${movieDetails.overview}`} />
+        {/* <meta property="og:title" content={`${movieDetails.title}`} /> */}{" "}
+        {/* not different from <title> */}
+        <meta
+          property="og:description"
+          content={`Read about ${movieDetails.title}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${movieDetails.poster}`} />
+        {/* <meta property="og:title" content={`${movieDetails.title}`} /> */}{" "}
+        {/* not different from <title> */}
+        <meta name="twitter:card" content="summary_large_image" />{" "}
+        {/* The summary_large_image option tells Twitter to show a large preview image. */}
+        <meta
+          name="twitter:description"
+          content={`Read about ${movieDetails.title}`}
+        />
+        <meta name="twitter:image" content={`${movieDetails.poster}`} />{" "}
+        {/* hopefully not too large image? */}
+      </Helmet>
+      <NavBar />
 
+      <main className="p-4">
+        <BackButton />
 
-          <BackButton/>
-                
         <h1 className="text-center md:text-start">{movieDetails.title}</h1>
         <div className="flex gap-4 md:gap-12 flex-col md:flex-row">
           <div className="flex justify-center">
-
-            <MovieCard movieObject={movieDetails}/> 
+            <MovieCard movieObject={movieDetails} />
           </div>
           <div className="w-full md:w-96 ">
             <h3>Release Date</h3>
@@ -113,13 +120,11 @@ export default function MoviePage() {
             <h3>Overview</h3>
             <p>{movieDetails.overview}</p>
             <span>rating: {movieDetails.vote_average}</span>
-
           </div>
         </div>
-        </main>
-        
-      </div>
-    )
+      </main>
+    </div>
+  );
 }
 
 /* 

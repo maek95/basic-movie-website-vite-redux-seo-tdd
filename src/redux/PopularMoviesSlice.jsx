@@ -4,30 +4,36 @@ import { getTMDBPopularMovies } from "../api/apiPopularMovies";
 // I made this slice for popular movies so I can fetch it once when the website mounts or if ANY page is refreshed.
 // Good to have if I want to display Popular Movies on multiple pages...
 
-export const fetchTMDBPopularMovies = createAsyncThunk( // read more about createAsyncThunk at the bottom of this file
-  'popularMovies/fetchTMDBPopularMovies',
-  getTMDBPopularMovies // await not needed in asyncThunk 
-)
+export const fetchTMDBPopularMovies = createAsyncThunk(
+  // read more about createAsyncThunk at the bottom of this file
+  "popularMovies/fetchTMDBPopularMovies",
+  getTMDBPopularMovies // await not needed in asyncThunk
+);
 
 export const popularMoviesSlice = createSlice({
-  name: 'popularMovies',
+  name: "popularMovies",
   initialState: {
     popularMoviesArr: [],
-    status: 'idle', // used in asyncThunk
+    status: "idle", // used in asyncThunk
     error: null, // used in asyncThunk
   },
   reducers: {
     // reduce interactions with the API if possible! How do I add a timer on refreshing data?
-    // timer is against Redux best practice since it is dynamic, redux-thunk here?
+    // timer is against Redux best practice since it is dynamic, redux-thunk if timer? 'reiterate'?
     setPopularMoviesFromLocalStorage: (state) => {
       if (typeof window !== "undefined") {
         const popularMoviesLocalStorage = localStorage.getItem("popularMovies");
-       
-        state.popularMoviesArr = popularMoviesLocalStorage ? JSON.parse(popularMoviesLocalStorage) : [];
 
-        console.log("populated popularMoviesArr with localStorage data, skipped fetch from TMDB API", state.popularMoviesArr);
+        state.popularMoviesArr = popularMoviesLocalStorage
+          ? JSON.parse(popularMoviesLocalStorage)
+          : [];
+
+        console.log(
+          "populated popularMoviesArr with localStorage data, skipped fetch from TMDB API",
+          state.popularMoviesArr
+        );
       }
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -37,19 +43,19 @@ export const popularMoviesSlice = createSlice({
       .addCase(fetchTMDBPopularMovies.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.popularMoviesArr = action.payload; // action.payload is 'getTMDBPopularMovies' returned data
-        // immutable due to Immer, don't need to copy array first (...) 
+        // immutable due to Immer, don't need to copy array first (...)
         if (typeof window !== "undefined") {
-          localStorage.setItem("popularMovies", JSON.stringify(action.payload))
+          localStorage.setItem("popularMovies", JSON.stringify(action.payload));
         }
       })
       .addCase(fetchTMDBPopularMovies.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
-  }
-})
+      });
+  },
+});
 
-export const {setPopularMoviesFromLocalStorage } = popularMoviesSlice.actions;
+export const { setPopularMoviesFromLocalStorage } = popularMoviesSlice.actions;
 
 export default popularMoviesSlice.reducer; // sent to store.jsx
 
