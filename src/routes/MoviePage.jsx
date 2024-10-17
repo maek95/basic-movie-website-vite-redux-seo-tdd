@@ -12,9 +12,9 @@ export default function MoviePage() {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const dispatch = useDispatch();
-  const visitedMoviesArr = useSelector(
+/*   const visitedMoviesArr = useSelector(
     (state) => state.visitedMovies.visitedMoviesArr
-  );
+  ); */
 
   useEffect(() => {
     async function fetchDetails() {
@@ -83,7 +83,7 @@ export default function MoviePage() {
 
   return (
     <div className="min-h-dvh z-40">
-      <Helmet>
+      <Helmet> {/* these meta-tags won't actually work because VITE is client-side. So when linking this page in e.g. Slack it will not show these meta-tags, but if you inspect element the page they will be shown... Nextjs solves this automatically because they are Server-side */}
         {" "}
         <title>{movieDetails.title}</title>
         <meta name="description" content={`${movieDetails.overview}`} />
