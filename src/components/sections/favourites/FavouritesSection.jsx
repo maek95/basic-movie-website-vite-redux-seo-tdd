@@ -8,7 +8,8 @@ export default function FavouritesSection() {
   const { favouritedMoviesArr } = useSelector(
     (state) => state.favouritedMovies
   );
-  const dispatch = useDispatch();
+ 
+  const dispatch = useDispatch(); 
 
   useEffect(() => {
     dispatch(setFavouritesFromLocalStorage());

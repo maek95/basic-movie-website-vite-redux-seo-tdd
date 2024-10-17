@@ -13,7 +13,7 @@ export default function SearchMovieField() {
 
   useEffect(() => {
     async function queryAndSaveResults() {
-      console.log("queryInput:", queryInput);
+      //console.log("queryInput:", queryInput);
 
       const results = await querySearchMovie(queryInput);
       setMovieResults(results);

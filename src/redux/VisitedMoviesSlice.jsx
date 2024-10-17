@@ -27,12 +27,11 @@ export const visitedMoviesSlice = createSlice({
     addToVisitedMovies: (state, action) => {
       const movieObject = action.payload;
       const visitedMovies = state.visitedMoviesArr;
-      let isAlreadyVisited;
-      isAlreadyVisited = visitedMovies.some(
-        (movie) => movie.id == movieObject.id
+      const isAlreadyVisited = visitedMovies.some(
+        (movie) => movie.id === movieObject.id
       );
 
-      if (isAlreadyVisited === false) {
+      if (!isAlreadyVisited) {
         console.log("new movie visited, adding to visitedMoviesArr");
 
         const updatedVisitedMovies = [

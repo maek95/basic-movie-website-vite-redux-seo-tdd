@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MovieCard from "../../MovieCard";
 import SlideMenu from "../SlideMenu";
+import { setPopularMoviesFromLocalStorage } from "../../../redux/PopularMoviesSlice";
 
 export default function PopularSection() {
   const { popularMoviesArr } = useSelector((state) => state.popularMovies);
@@ -10,6 +11,13 @@ export default function PopularSection() {
 
     console.log("popularMoviesArr:", popularMoviesArr);
   }, [popularMoviesArr]) */
+
+  const dispatch = useDispatch(); 
+
+  useEffect(() => {
+    dispatch(setPopularMoviesFromLocalStorage());
+  }, []);
+
 
   if (!popularMoviesArr || popularMoviesArr.length < 1) {
     <>

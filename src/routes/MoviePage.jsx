@@ -5,22 +5,25 @@ import { getMovieDetails } from "../api/apiMovieDetails";
 import MovieCard from "../components/MovieCard";
 import BackButton from "../components/BackButton";
 import NavBar from "../components/navbar/NavBar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToVisitedMovies } from "../redux/VisitedMoviesSlice";
 
 export default function MoviePage() {
-  const { id } =
-    useParams(); /* TODO: use id to send a GET request to TMDB API for more info */
-  /* Technically I could extract the movie object from my PopularMovieArr or FavouritedMovieArr... if that is what ill only use...?   */
+  const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const dispatch = useDispatch();
+  const visitedMoviesArr = useSelector(
+    (state) => state.visitedMovies.visitedMoviesArr
+  );
 
   useEffect(() => {
     async function fetchDetails() {
       const movieObject = await getMovieDetails(id);
+      if (movieObject) {
+        setMovieDetails(movieObject);
 
-      setMovieDetails(movieObject);
-      dispatch(addToVisitedMovies(movieObject));
+        dispatch(addToVisitedMovies(movieObject)); // addToVisitedMovies also checks for duplicates
+      }
     }
     fetchDetails();
   }, []);
@@ -82,19 +85,16 @@ export default function MoviePage() {
     <div className="min-h-dvh z-40">
       <Helmet>
         {" "}
-        {/* TODO:  */}
         <title>{movieDetails.title}</title>
         <meta name="description" content={`${movieDetails.overview}`} />
-        {/* <meta property="og:title" content={`${movieDetails.title}`} /> */}{" "}
-        {/* not different from <title> */}
+        <meta property="og:title" content={`${movieDetails.title}`} />{" "}
+        {/* not different from <title>, still needed? */}
         <meta
           property="og:description"
           content={`Read about ${movieDetails.title}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={`${movieDetails.poster}`} />
-        {/* <meta property="og:title" content={`${movieDetails.title}`} /> */}{" "}
-        {/* not different from <title> */}
         <meta name="twitter:card" content="summary_large_image" />{" "}
         {/* The summary_large_image option tells Twitter to show a large preview image. */}
         <meta

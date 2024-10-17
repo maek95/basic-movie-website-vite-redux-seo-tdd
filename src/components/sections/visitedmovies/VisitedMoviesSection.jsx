@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SlideMenu from "../SlideMenu";
 import MovieCard from "../../MovieCard";
 import { useEffect } from "react";
+import { setVisitedMoviesFromLocalStorage } from "../../../redux/VisitedMoviesSlice";
 
 export default function VisitedMoviesSection() {
   const { visitedMoviesArr } = useSelector((state) => state.visitedMovies);
@@ -10,6 +11,13 @@ export default function VisitedMoviesSection() {
     console.log("visitedMoviesArr:", visitedMoviesArr);
     
   }, [visitedMoviesArr]) */
+
+  const dispatch = useDispatch(); 
+
+  useEffect(() => {
+    dispatch(setVisitedMoviesFromLocalStorage());
+  }, []);
+
 
   return (
     <>

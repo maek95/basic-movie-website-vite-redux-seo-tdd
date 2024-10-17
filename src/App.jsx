@@ -13,7 +13,8 @@ import { setFavouritesFromLocalStorage } from './redux/FavouritedMoviesSlice'
 
 function App() {
 
-  const dispatch = useDispatch();
+  // moved this to respective components instead (FavouritesSection.jsx, PopularSection.jsx, VisitedMoviesSection.jsx)
+/*   const dispatch = useDispatch();
   
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -46,7 +47,7 @@ function App() {
       }
 
     }
-  }, []) // fetch popular movies once when project mounts, and if any page is refreshed
+  }, []) // fetch popular movies once when project mounts, and if any page is refreshed */
 
  return (
   <>
