@@ -9,6 +9,7 @@ import { fetchTMDBPopularMovies, setPopularMoviesFromLocalStorage } from './redu
 import AboutPage from './routes/AboutPage'
 import MyPage from './routes/MyPage'
 import { setVisitedMoviesFromLocalStorage } from './redux/VisitedMoviesSlice'
+import { setFavouritesFromLocalStorage } from './redux/FavouritedMoviesSlice'
 
 function App() {
 
@@ -33,6 +34,15 @@ function App() {
         dispatch(setVisitedMoviesFromLocalStorage());
       } else {
         console.log("visitedMovies in localStorage is empty or doesn't exist");
+      }
+
+      const favouritedMoviesFromLocalStorage = localStorage.getItem("favouritedMovies");
+
+      if (favouritedMoviesFromLocalStorage && favouritedMoviesFromLocalStorage !== "undefined" && favouritedMoviesFromLocalStorage !== "null") {
+       // console.log("favouritedMovies found in localStorage, dispatching to redux");
+        dispatch(setFavouritesFromLocalStorage());
+      } else {
+        console.log("favouritedMovies in localStorage is empty or doesn't exist");
       }
 
     }
