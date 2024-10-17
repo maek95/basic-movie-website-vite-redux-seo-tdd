@@ -76,7 +76,7 @@ The app uses `react-router-dom` for routing. All routes are declared in `App.jsx
    In `App.jsx` we run functions from `popularArrays.jsx` that searches localStorage for `popularMovies`, `favouritedMovies`, `visitedMovies`, if they are found they are dispatched to their respective Redux Slice and their arrays. These functions are run on-mount and on page reloads (with `useEffect`), making sure users always have the latest information.
 
 Global state is managed using **Redux Toolkit** with three main slices:
-- **PopularMoviesSlice**: Manages popular movies. It contains an `asyncTunk`-function that fetches Top-20 popular movies from the TMDB API - or if it has already been fetched it is retrieved from localStorage.
+- **PopularMoviesSlice**: Manages popular movies. It contains an `asyncTunk`-function that fetches Top-20 popular movies from the TMDB API - or from localStorage if it has been fetched earlier. <- TODO: Add a timer on fetching movies anew?
 - **FavouritedMoviesSlice**: Manages favourite movies. 
 - **VisitedMoviesSlice**: Manages tracking of movies which a user has visited. 
 
