@@ -12,12 +12,13 @@ export default function VisitedMoviesSection() {
     
   }, [visitedMoviesArr]) */
 
-  const dispatch = useDispatch(); 
+  // do this in App.jsx instead, triggered on any page mount or page refresh
+  /* const dispatch = useDispatch(); 
 
   useEffect(() => {
     dispatch(setVisitedMoviesFromLocalStorage());
   }, []);
-
+ */
 
   return (
     <>

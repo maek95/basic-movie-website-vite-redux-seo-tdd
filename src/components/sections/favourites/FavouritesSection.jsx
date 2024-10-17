@@ -9,11 +9,12 @@ export default function FavouritesSection() {
     (state) => state.favouritedMovies
   );
  
-  const dispatch = useDispatch(); 
+  // do this in App.jsx instead, triggered on any page mount or page refresh
+ /*  const dispatch = useDispatch(); 
 
   useEffect(() => {
     dispatch(setFavouritesFromLocalStorage());
-  }, []);
+  }, []); */
 
   if (!favouritedMoviesArr || favouritedMoviesArr.length < 1) {
     <>

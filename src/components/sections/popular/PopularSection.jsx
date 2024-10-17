@@ -12,12 +12,13 @@ export default function PopularSection() {
     console.log("popularMoviesArr:", popularMoviesArr);
   }, [popularMoviesArr]) */
 
-  const dispatch = useDispatch(); 
+  // do this in App.jsx instead, triggered on any page mount or page refresh
+ /*  const dispatch = useDispatch(); 
 
   useEffect(() => {
     dispatch(setPopularMoviesFromLocalStorage());
   }, []);
-
+ */
 
   if (!popularMoviesArr || popularMoviesArr.length < 1) {
     <>

@@ -3,51 +3,24 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import HomePage from './routes/HomePage'
 import MoviePage from './routes/MoviePage'
-import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { fetchTMDBPopularMovies, setPopularMoviesFromLocalStorage } from './redux/PopularMoviesSlice'
 import AboutPage from './routes/AboutPage'
 import MyPage from './routes/MyPage'
-import { setVisitedMoviesFromLocalStorage } from './redux/VisitedMoviesSlice'
-import { setFavouritesFromLocalStorage } from './redux/FavouritedMoviesSlice'
+import { usePopulateFavouritedMoviesArr, usePopulatePopularMoviesArr, usePopulateVisitedMoviesArr } from './utils/populateArrays'
 
 function App() {
 
-  // moved this to respective components instead (FavouritesSection.jsx, PopularSection.jsx, VisitedMoviesSection.jsx)
-/*   const dispatch = useDispatch();
-  
+  // have to extract custom hooks before useEffect, to adhere to React Hooks
+  const populatePopularMoviesArr = usePopulatePopularMoviesArr();
+  const populateVisitedMoviesArr = usePopulateVisitedMoviesArr();
+  const populateFavouritedMoviesArr = usePopulateFavouritedMoviesArr();
+
+  // TODO: move this to respective components instead? But that can lead to very repetitive code, why not just place here?
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const popularMoviesLocalStorage = localStorage.getItem("popularMovies"); // just used to check if popularMovies item exists, if it doesnt we fetch popular movies from the API
- 
-        // sometimes localStorage stores 'undefined' as a String...
-      if (popularMoviesLocalStorage && popularMoviesLocalStorage !== "undefined" && popularMoviesLocalStorage !== "null") {
-        //console.log("popularMovies found in localStorage, dispatching to redux, skipping fetch from TMDB API");
-        dispatch(setPopularMoviesFromLocalStorage());
-      } else {
-        dispatch(fetchTMDBPopularMovies()); // 'await' not needed because it is an asyncThunk function...?
-      }
-
-      const visitedMoviesFromLocalStorage = localStorage.getItem("visitedMovies");
-
-      if (visitedMoviesFromLocalStorage && visitedMoviesFromLocalStorage !== "undefined" && visitedMoviesFromLocalStorage !== "null") {
-       // console.log("visitedMovies found in localStorage, dispatching to redux");
-        dispatch(setVisitedMoviesFromLocalStorage());
-      } else {
-        console.log("visitedMovies in localStorage is empty or doesn't exist");
-      }
-
-      const favouritedMoviesFromLocalStorage = localStorage.getItem("favouritedMovies");
-
-      if (favouritedMoviesFromLocalStorage && favouritedMoviesFromLocalStorage !== "undefined" && favouritedMoviesFromLocalStorage !== "null") {
-       // console.log("favouritedMovies found in localStorage, dispatching to redux");
-        dispatch(setFavouritesFromLocalStorage());
-      } else {
-        console.log("favouritedMovies in localStorage is empty or doesn't exist");
-      }
-
-    }
-  }, []) // fetch popular movies once when project mounts, and if any page is refreshed */
+    populatePopularMoviesArr(); // from localStorage OR fetch from API if empty.
+    populateVisitedMoviesArr(); // from localStorage
+    populateFavouritedMoviesArr(); // from localStorage
+  }, [populatePopularMoviesArr, populateVisitedMoviesArr, populateFavouritedMoviesArr]);
 
  return (
   <>
