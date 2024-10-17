@@ -72,14 +72,14 @@ The app uses `react-router-dom` for routing. All routes are declared in `App.jsx
 
 ## Global State Management and localStorage
 
-Global state is managed using **Redux Toolkit** with three main slices:
-
-- **PopularMoviesSlice**: Fetches popular movies using `asyncThunk` and stores them in localStorage to minimize API calls.
-- **FavouritedMoviesSlice**: Manages favourite movies. These are displayed on the home page and the user's personal page.
-- **VisitedMoviesSlice**: Tracks which movie pages a user has visited.
-
 `localStorage` is used to persist data in all these slices during page reloads.
-   In `App.jsx` there is an `useEffect` that searches localStorage for `popularMovies`, `favouritedMovies`, `visitedMovies`, if they are found they are dispatched to their respective Redux Slice.
+   In `App.jsx` we run functions from `popularArrays.jsx` that searches localStorage for `popularMovies`, `favouritedMovies`, `visitedMovies`, if they are found they are dispatched to their respective Redux Slice and their arrays. These functions are run on-mount and on page reloads (with `useEffect`), making sure users always have the latest information.
+
+Global state is managed using **Redux Toolkit** with three main slices:
+- **PopularMoviesSlice**: Manages popular movies. It contains an `asyncTunk`-function that fetches Top-20 popular movies from the TMDB API - or from localStorage if it has been fetched earlier. <- TODO: Add a timer on fetching movies anew?
+- **FavouritedMoviesSlice**: Manages favourite movies. 
+- **VisitedMoviesSlice**: Manages tracking of movies which a user has visited. 
+
 
 ## Testing
 
