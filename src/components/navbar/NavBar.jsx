@@ -14,17 +14,17 @@ export default function NavBar() {
   useEffect(() => {
     if (isHamburgerClicked) {
       // Disable scroll
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed'; // Freeze the body
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed"; // Freeze the body
     } else {
       // Enable scroll
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
+      document.body.style.overflow = "unset";
+      document.body.style.position = "unset";
     }
     return () => {
       // Cleanup function to reset styles when the component unmounts
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
+      document.body.style.overflow = "unset";
+      document.body.style.position = "unset";
     };
   }, [isHamburgerClicked]);
 
@@ -68,10 +68,12 @@ export default function NavBar() {
         </li>
       </ul>
       <div className="flex md:hidden bg-inherit">
-        <Hamburger toggled={isHamburgerClicked} toggle={setIsHamburgerClicked}/>
-
+        <Hamburger
+          toggled={isHamburgerClicked}
+          toggle={setIsHamburgerClicked}
+        />
       </div>
-      {isHamburgerClicked && <ExpandedMenu/>}
+      {isHamburgerClicked && <ExpandedMenu />}
     </div>
   );
 }

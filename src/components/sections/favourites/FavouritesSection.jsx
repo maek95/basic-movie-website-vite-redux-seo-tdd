@@ -5,37 +5,34 @@ import { setFavouritesFromLocalStorage } from "../../../redux/FavouritedMoviesSl
 import SlideMenuAndFlexWrap from "../SlideMenuAndFlexWrap";
 
 export default function FavouritesSection() {
-
-  const { favouritedMoviesArr } = useSelector(state => state.favouritedMovies)
+  const { favouritedMoviesArr } = useSelector(
+    (state) => state.favouritedMovies
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setFavouritesFromLocalStorage());
-  }, [])
+  }, []);
 
   if (!favouritedMoviesArr || favouritedMoviesArr.length < 1) {
     <>
-      <div>
-        Loading my favourites...
-      </div>
-    </>
+      <div>Loading my favourites...</div>
+    </>;
   }
 
   /* useEffect(() => {
 
     console.log("favouritedMoviesArr:", favouritedMoviesArr);
   }, [favouritedMoviesArr]) */
-  
+
   return (
     <>
       <h2 className="text-center md:text-start">My Favourites</h2>
       <SlideMenuAndFlexWrap>
         {favouritedMoviesArr.map((movie, index) => {
-          return (
-            <MovieCard key={index} movieObject={movie}/>
-          )
+          return <MovieCard key={index} movieObject={movie} />;
         })}
       </SlideMenuAndFlexWrap>
     </>
-  )
+  );
 }
